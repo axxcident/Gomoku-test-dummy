@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <title>Gomoku</title>
+</head>
+<body>
+  <section>
+    <div class="controls">
+       <div class="newGameCtrl">
+          <input type="checkbox" id="check">
+          <label class="newMain" for="check">
+             <div class="newMainText">new</div>
+          </label>
+          <div class="newContainer">
+             <div class="newPlate">
+                <div class="boardCellCircle" id="new-O"></div>
+             </div>
+             <div class="newPlate">
+                <div class="boardCellCross" id="new-X"></div>
+             </div>
+          </div>
+       </div>
+       <div class="sizeCtrl">
+          <div class="newMain">
+             <div class="newMainText" id="scale-Up"></div>
+          </div>
+       </div>
+       <div class="sizeCtrl">
+          <div class="newMain">
+             <div class="newMainText" id="scale-Down"></div>
+          </div>
+       </div>
+       <div class="messages">
+          <div class="messagesContainer">
+             <div class="newMainText" id="message">try to get 5 in a row!</div>
+          </div>
+       </div>
+    </div>
+    <div class="board">
+       <!-- Pug code for generating the board rows and columns -->
+    </div>
+ </section>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="index.js"></script>
+ <script>
+  // Define your game parameters (e.g., boardSize, cellsCount) here
+  let cellsCount = 15;
+  // Get a reference to the board element
+  const board = document.querySelector('.board');
+
+  // Loop to create rows
+  for (let i = 0; i < cellsCount; i++) {
+    const row = document.createElement('div');
+    row.className = 'boardRow';
+
+    // Loop to create columns within each row
+    for (let j = 0; j < cellsCount; j++) {
+      const col = document.createElement('div');
+      col.className = 'boardCol';
+
+      // Create a child element (e.g., div with id) for each cell
+      const cell = document.createElement('div');
+      cell.id = `${i}-${j}`;
+      cell.className = 'boardCell'; // Add additional classes as needed
+
+      // Append the cell to the column and the column to the row
+      col.appendChild(cell);
+      row.appendChild(col);
+    }
+
+    // Append the row to the board
+    board.appendChild(row);
+  }
+</script>
+</body>
+</html>
